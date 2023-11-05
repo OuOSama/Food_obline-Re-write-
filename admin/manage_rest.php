@@ -1,91 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php include('../asset/head/head-admin.php'); ?>
+    <title>Manage Restaurant</title>
+    <?php include('../asset/head/head-admin.php');?>
 </head>
-
 <body>
-    <div class="content ">
-        <div class="card body shadow p-5 mb-5 bg-body rounded ">
+    <div class="content">
+        <div class="card shadow mb-5 p-5 rounded">
             <h1 align="center" class="p-1">Manage Restaurant</h1>
-            <table class="table ">
-                <thead align="center">
-                    <th>Cate_ID</th>
-                    <th>Restaurant_Name</th>
-                    <th>Restaurant_Email</th>
-                    <th>Restaurant_Phone</th>
-                    <th>Open</th>
-                    <th>Close</th>
-                    <th>Openingday</th>
-                    <th>Restaurant_Address</th>
-                    <th colspan="2">Action</th>
-                </thead>
-                <tbody>
-                    <form action="config_rest.php" method="post">
-                        <input type="hidden" name="res_id">
-                        <td><input type="text"  class="form-control" name="cate_id"></td>
-                        <td><input type="text"  class="form-control" name="res_name"></td>
-                        <td><input type="email" class="form-control" name="res_mail"></td>
-                        <td><input type="tel"   class="form-control" name="res_phone"></td>
-                        <td><input type="time"  class="form-control" name="o_hr"></td>
-                        <td><input type="time"  class="form-control" name="c_hr"></td>
-                        <td>
-                            <select class="form-select" name="o_day">
-                                <option value="mon-mon">mon-mon</option>
-                                <option value="mon-tue">mon-tue</option>
-                                <option value="mon-wed">mon-wed</option>
-                                <option value="mon-thu">mon-thu</option>
-                                <option value="mon-fri">mon-fri</option>
-                                <option value="mon-sat">mon-sat</option>
-                                <option value="mon-sun">mon-sun</option>
-                            </select>
-                        </td>
-                        <td><input type="text" class="form-control" name="res_address"></td>
-                        <td colspan="2"><button type="submit" name="insert" class=" btn btn-secondary form-control">Insert</button></td>
-                    </form>
-                </tbody>
-                <?php
-                    $sql = "SELECT * FROM restaurant";
-                    $query = mysqli_query($connect,$sql);
-                ?>
-                <?php 
-                    while($result=mysqli_fetch_array($query)){
-                ?>
-                <tbody>
-                    <form action="config_rest.php" method=POST>
-                        <input type="hidden" name="res_id" value=<?php echo$result["res_id"]?>>
-                        <td><input type="text" class="form-control" name="cate_id"  value="<?php echo$result["cate_id"]; ?>"></td>
-                        <td><input type="text" class="form-control" name="res_name" value="<?php echo$result["res_name"]; ?>"></td>
-                        <td><input type="text" class="form-control" name="res_mail" value="<?php echo$result["res_mail"]; ?>"></td>
-                        <td><input type="text" class="form-control" name="res_phone"value="<?php echo$result["res_phone"]; ?>"></td>
-                        <td><input type="time" class="form-control" name="o_hr"     value="<?php echo$result["o_hr"]; ?>"></td>
-                        <td><input type="time" class="form-control" name="c_hr"     value="<?php echo$result["c_hr"]; ?>"></td>
-                        <td>
-                            <select class="form-select" name="o_day">
-                                <option value="<?php echo$result["o_day"]; ?>"><?php echo$result["o_day"]; ?></option>
-                                <option value="mon-mon">mon-mon</option>
-                                <option value="mon-tue">mon-tue</option>
-                                <option value="mon-wed">mon-wed</option>
-                                <option value="mon-thu">mon-thu</option>
-                                <option value="mon-fri">mon-fri</option>
-                                <option value="mon-sat">mon-sat</option>
-                                <option value="mon-sun">mon-sun</option>
-                            </select>
-                        </td>
-                        <td><input type="text" class="form-control" name="res_address" value="<?php echo$result["res_address"]; ?>"></td>
-
-                        <td><button type="submit" name="update" class="btn btn-primary">Update</button></td>
-                        <td><button type="submit" name="delete" class="btn btn-danger">Delete</button></td>
-                    </form>
-                    <?php } ?>
-                </tbody>
+            <table class="table">
+                <form action="config_rest.php" method="post">
+                    <thead align="center">
+                        <th>Cate Id</th>
+                        <th>Restaurant Name</th>
+                        <th>Restaurant Email</th>
+                        <th>Restaurant Phone</th>
+                        <th>open</th>
+                        <th>close</th>
+                        <th>Openning day</th>
+                        <th>Address</th>
+                        <th colspan="2">Action</th>
+                    </thead>
+                    <tbody>
+                        <form action="config_rest.php" method="post">
+                            <input type="hidden" name="res_id">
+                            <td><input type="text" name="cate_id" class="form-control"></td>
+                            <td><input type="text" name="res_name" class="form-control"></td>
+                            <td><input type="email" name="res_mail" class="form-control"></td>
+                            <td><input type="tel" name="res_phone" class="form-control"></td>
+                            <td><input type="time" name="o_hr" class="form-control"></td>
+                            <td><input type="time" name="c_hr" class="form-control"></td>
+                            <td>
+                                <select name="o_day" class="form-select">
+                                    <option value="mon-mon">mon-mon</option>
+                                    <option value="mon-tue">mon-tue</option>
+                                    <option value="mon-wed">mon-wed</option>
+                                    <option value="mon-thu">mon-thu</option>
+                                    <option value="mon-fri">mon-fri</option>
+                                    <option value="mon-sun">mon-sun</option>
+                                    <option value="mon-sat">mon-sat</option>
+                            </td>
+                            <td><input type="text" name="res_address" class="form-control"></td>
+                            <td colspan="2"><button type="submit" name="insert" class="btn btn-secondary form-control">Insert</button></td>
+                        </form>
+                    </tbody>
+                    <?php $sql = "SELECT * FROM restaurant";?>
+                    <?php $query = mysqli_query($connect, $sql);
+                          while($result = mysqli_fetch_array($query)) {
+                    ?>
+                    <tbody>
+                        <form action="config_rest.php" method="post">
+                            <input type="hidden"    name="res_id"    value= <?php echo$result['res_id'];?>>
+                            <td><input type="text"  name="cate_id"   class="form-control" value=<?php echo$result['cate_id'];?>></td>
+                            <td><input type="text"  name="res_name"  class="form-control" value=<?php echo$result['res_name'];?>></td>
+                            <td><input type="email" name="res_mail"  class="form-control" value=<?php echo$result['res_mail'];?>></td>
+                            <td><input type="tel"   name="res_phone" class="form-control" value=<?php echo$result['res_phone'];?>></td>
+                            <td><input type="time"  name="o_hr"      class="form-control" value=<?php echo$result['o_hr'];?>></td>
+                            <td><input type="time"  name="c_hr"      class="form-control" value=<?php echo$result['c_hr'];?>></td>
+                            <td>
+                                <select name="o_day" class="form-select">
+                                    <option value="<?php echo$result['o_day'];?>"><?php echo$result['o_day'];?></option>
+                                    <option value="mon-mon">mon-mon</option>
+                                    <option value="mon-tue">mon-tue</option>
+                                    <option value="mon-wed">mon-wed</option>
+                                    <option value="mon-thu">mon-thu</option>
+                                    <option value="mon-fri">mon-fri</option>
+                                    <option value="mon-sun">mon-sun</option>
+                                    <option value="mon-sat">mon-sat</option>
+                                </select>
+                            </td>
+                            <td><input type="text" name="res_address" class="form-control" value=<?php echo$result['res_address'];?>></td>
+                            <td><button type="submit" name="update" class="form-control btn btn-success">Update</button></td>
+                            <td><button type="submit" name="delete" class="form-control btn btn-danger" >Delete</button></td>
+                        </form>
+                    </tbody>
+                    <?php }?>
+                </form>
             </table>
         </div>
     </div>
 </body>
-
 </html>
